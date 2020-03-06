@@ -22,8 +22,8 @@ def encode_onehot(labels):
     return labels_onehot
 
 
-def load_data(path="data/cora/", dataset="cora"):
-    """Load citation network dataset (cora only for now)"""
+def load_data(path="data/cora_raw/", dataset="cora"):
+    """Load citation network dataset (cora only for now). Here just use numpy and scipy to cope with data."""
     print('Loading {} dataset...'.format(dataset))
 
     idx_features_labels = np.genfromtxt("{}{}.content".format(path, dataset),

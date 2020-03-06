@@ -13,14 +13,30 @@ Note: There are subtle differences between the TensorFlow implementation in http
 
 This implementation makes use of the Cora dataset from [2].
 
+For Graph Convolutional Networks (GCNs), here we have two kinds of implementation, one is use pure numpy and PyTorch, the other is use torch-geometric and PyTorch.
+
 ## Requirements
 
-  * PyTorch 1.2.0
   * Python 3.6
+  * PyTorch 1.2.0
+  * torch-cluster 1.4.5
+  * torch-scatter 1.4.0
+  * torch-sparse 0.4.3
+  * torch-geometric 1.3.2
 
 ## Usage
 
-```python train.py```
+```python train_gcn.py```
+
+```python train_Kipfgcn.py```
+
+## Result(accuracy here)
+dataset | train | dev | test
+---|---|---|---|
+Cora| 0.986| 0.81 | 0.81 |
+citeseer| 0.983| 0.728 | 0.714 |
+pubmed| 1.0| 0.798 | 0.794 |
+
 
 ## References
 

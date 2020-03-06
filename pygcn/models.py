@@ -12,8 +12,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 from layers import GraphConvolution
 
+from torch_geometric.datasets import Planetoid
+import torch_geometric.transforms as T
+from torch_geometric.nn import GCNConv
 
 class GCN(nn.Module):
+    '''pure GCN just use PyTorch'''
     def __init__(self, nfeat, nhid, nclass, dropout):
         super(GCN, self).__init__()
 
@@ -25,4 +29,20 @@ class GCN(nn.Module):
         x = F.relu(self.gc1(x, adj))
         x = F.dropout(x, self.dropout, training=self.training)
         x = self.gc2(x, adj)
+        return F.log_softmax(x, dim=1)
+
+
+class KipfGCN(nn.Module):
+    '''GCN use torch_geometric framework'''
+    def __init__(self, data, num_class, args):
+        super(KipfGCN, self).__init__()
+        self.args = args
+        self.data = data
+        self.conv1 = GCNConv(self.data.num_features, self.args.gcn_dim, cached=True)
+        self.conv2 = GCNConv(self.args.gcn_dim, num_class, cached=True)
+
+    def forward(self, x, edge_index):
+        x = F.relu(self.conv1(x, edge_index))
+        x = F.dropout(x, p=self.args.dropout, training=self.training)
+        x = self.conv2(x, edge_index)
         return F.log_softmax(x, dim=1)
