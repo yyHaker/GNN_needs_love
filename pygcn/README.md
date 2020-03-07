@@ -7,7 +7,8 @@ For a high-level introduction to GCNs, see:
 
 Thomas Kipf, [Graph Convolutional Networks](http://tkipf.github.io/graph-convolutional-networks/) (2016)
 
-![Graph Convolutional Networks](figure.png)
+
+![Graph Convolutional Networks](files/figure.png)
 
 Note: There are subtle differences between the TensorFlow implementation in https://github.com/tkipf/gcn and this PyTorch re-implementation. This re-implementation serves as a proof of concept and is not intended for reproduction of the results reported in [1].
 
