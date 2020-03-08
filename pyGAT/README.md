@@ -6,6 +6,8 @@ model presented by Veličković et. al (2017, https://arxiv.org/abs/1710.10903).
 Here we have three kinds of implementation of GAT, **GAT** is pure PyTorch implementation, **SpGAT** is a sparse version GAT using PyTorch and
 **PyGAT** is a version of GAT using PyTorch torch_geometric.
 
+![Graph Attention Networks](files/GAT.png)
+
 # Performances
 
 For the branch **master**, the training of the transductive learning on Cora task on a Titan Xp takes ~0.9 sec per epoch and 10-15 minutes for the whole training (~800 epochs). The final accuracy is between 84.2 and 85.3 (obtained on 5 different runs). 
